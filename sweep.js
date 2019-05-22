@@ -57,7 +57,7 @@ let speed = 4000;
 
 let different=[]
 
-const animationFrames=100;
+const animationFrames=40;
 
 let removed=[];
 let displaySet=[];
