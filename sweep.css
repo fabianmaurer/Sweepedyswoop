@@ -1,0 +1,29 @@
+body{
+    margin:0;
+    background:black;
+}
+
+#sweep{
+    position:fixed;
+    width:200px;
+    height:30px;
+    bottom:40px;
+    background:rgba(255,144,43,0.7);
+    color:white;
+    border:1px solid rgb(255,144,43);
+    border-radius:3px;
+    cursor:pointer;
+    left:calc(50% - 100px);
+    transition:all 0.2s ease;
+}
+
+#sweep:hover{
+    transform:scale(1.4);
+}
+
+#sweep.active{
+    transform:scale(1.4);
+    cursor:default;
+    background:rgba(35,183,229,0.7);
+    border:1px solid #23b7e5;
+}
