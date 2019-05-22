@@ -98,6 +98,9 @@ $('#sweep').click(function(e){
 })
 
 function addPoint(x,y){
+    for(let p of points){
+        if(p.x==x) x++;
+    }
     if(points.length==0) points.push({x:x,y:y});
     else for(let i=0;i<points.length;i++){
         if(points[i].x>x){
@@ -221,15 +224,21 @@ function sweepDone(){
 }
 
 function sweepLoop(){
-    sweepPos+=2;
-    drawSweepline();
-    if(sweepIndex<points.length){
-        if(checkForCollision()){
-            addSweepPoint(points[sweepIndex])
-            center=getCenter(hull);
-            sweepIndex++;
+    let steps=4;
+    for(let i=0;i<steps;i++){
+        sweepPos++;
+        if(sweepIndex<points.length){
+            if(checkForCollision()){
+                addSweepPoint(points[sweepIndex])
+                center=getCenter(hull);
+                sweepIndex++;
+            }
         }
     }
+    
+
+    
+    drawSweepline();
     
     if(particleSim){
         calculateMovement();
@@ -246,7 +255,7 @@ function sweepLoop(){
 function drawSweepline(){
     ctxS.clearRect(0,0,w,h)
 
-    ctxS.strokeStyle="white"
+    ctxS.strokeStyle="#00BFFF"
     ctxS.lineWidth=2;
     ctxS.beginPath();
     ctxS.moveTo(sweepPos,0)
